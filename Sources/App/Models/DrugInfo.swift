@@ -1,8 +1,8 @@
-import FluentSQLite
+import FluentMySQL
 import Vapor
 
 /// A single entry of a DrugInfo list.
-final class DrugInfo: Content, SQLiteModel {
+final class DrugInfo: Content, MySQLModel {
     
     /// The unique identifier for this `DrugInfo`.
     var id: Int?
@@ -17,8 +17,8 @@ final class DrugInfo: Content, SQLiteModel {
     }
 }
 
-/// Allows `DrugInfo` to be used as a dynamic migration.
-extension DrugInfo: Migration { }
+///// Allows `DrugInfo` to be used as a dynamic migration.
+//extension DrugInfo: Migration { }
 
 /// Allows `DrugInfo` to be encoded to and decoded from HTTP messages.
 //extension DrugInfo: Content { }
