@@ -18,7 +18,7 @@ class DrugInfoController: RouteCollection {
     let DeleteSuccess = "删除成功"
     let NoID = "ID不存在"
     
-    //定义接口名称
+    // 定义接口名称
     func boot(router: Router) throws {
         router.group("drug"){ group in
             group.post("select", use: self.select)
