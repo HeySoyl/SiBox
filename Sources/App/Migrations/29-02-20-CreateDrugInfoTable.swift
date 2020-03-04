@@ -6,10 +6,10 @@
 //
 
 import Fluent
-import FluentMySQL
+import FluentPostgreSQL
 
 extension DrugInfo: Migration {
-    static func prepare( on connection: MySQLConnection ) -> Future<Void>
+    static func prepare( on connection: PostgreSQLConnection ) -> Future<Void>
     {
         return Database.create(DrugInfo.self, on: connection){
             builder in
@@ -17,7 +17,7 @@ extension DrugInfo: Migration {
         }
     }
     static func revert(
-        on connection: MySQLConnection) -> Future<Void> {
+        on connection: PostgreSQLConnection) -> Future<Void> {
         return Database.delete(DrugInfo.self, on: connection)
     }
 }

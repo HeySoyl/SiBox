@@ -1,8 +1,8 @@
-import FluentMySQL
+import FluentPostgreSQL
 import Vapor
 
 /// A single entry of a DrugInfo list.
-final class DrugInfo: Content, MySQLModel {
+final class DrugInfo: Content, PostgreSQLModel {
     
     /// The unique identifier for this `DrugInfo`.
     var id: Int?
