@@ -21,7 +21,7 @@ class DrugInfoController: RouteCollection {
     // 定义接口名称
     func boot(router: Router) throws {
         router.group("drug"){ group in
-            group.post("select", use: self.select)
+            group.get("select", use: self.select)
             group.post("selectAll", use: self.selectAll)
             group.post("create", use: self.create)
             group.patch("update", use: self.update)
@@ -30,6 +30,14 @@ class DrugInfoController: RouteCollection {
     }
     
     func select(_ req: Request) throws -> Future<Response>{
+        return DrugInfo.query(on: req)
+            .all()
+            .flatMap({  content in
+                return try ResponseJSON<[DrugInfo]>(status: 0, message: self.GetSuccess, data: content).encode(for: req)
+            })
+    }
+    
+    func selectAll(_ req: Request) throws -> Future<Response>{
 //        return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
             return DrugInfo.query(on: req)
                 .all()
@@ -38,15 +46,7 @@ class DrugInfoController: RouteCollection {
                 })
 //        }
     }
-    func selectAll(_ req: Request) throws -> Future<Response>{
-        return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
-            return DrugInfo.query(on: req)
-                .all()
-                .flatMap({  content in
-                    return try ResponseJSON<[DrugInfo]>(status: 0, message: self.GetSuccess, data: content).encode(for: req)
-                })
-        }
-    }
+    
     func create(_ req: Request) throws -> Future<Response>{
         return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
             return drugInfoes.save(on: req)
@@ -55,6 +55,7 @@ class DrugInfoController: RouteCollection {
                 })
         }
     }
+    
     func update(_ req: Request) throws -> Future<Response>{
         return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
             if drugInfoes.id == nil {
@@ -66,6 +67,7 @@ class DrugInfoController: RouteCollection {
             }
         }
     }
+    
     func delete(_ req: Request) throws -> Future<Response>{
         return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
             
