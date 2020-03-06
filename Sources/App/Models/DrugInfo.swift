@@ -7,10 +7,10 @@ final class DrugInfo: Content, PostgreSQLModel {
     /// The unique identifier for this `DrugInfo`.
     var id: Int?
     var name: String
-    var image: Data
+    var image: String
 
     /// Creates a new `DrugInfo`.
-    init(id: Int? = nil, name: String, image: Data) {
+    init(id: Int? = nil, name: String, image: String) {
         self.id = id
         self.name = name
         self.image = image
