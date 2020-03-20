@@ -23,7 +23,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     let username: String = "postgres"
     let database: String = "postgres"
     let password: String = "postgres"
-    let port: Int = 5432
+    let port: Int = 54322
     
     if let url = Environment.get("DATABASE_URL") {
         // configuring database

@@ -49,6 +49,7 @@ class DrugInfoController: RouteCollection {
     
     func create(_ req: Request) throws -> Future<Response>{
         return try req.content.decode(DrugInfo.self).flatMap { drugInfoes in
+            drugInfoes.uuid = UUID()
             return drugInfoes.save(on: req)
                 .flatMap({  content in
                     return try ResponseJSON<[Empty]>(status: 0, message: self.SaveSuccess).encode(for: req)

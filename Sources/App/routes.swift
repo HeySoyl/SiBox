@@ -5,8 +5,6 @@ public func routes(_ router: Router) throws {
     
     try router.register(collection: DrugInfoController())
     
-    
-    
 //    // Basic "It works" example
 //    router.get { req in
 //        return "It works!"
