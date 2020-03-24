@@ -4,6 +4,7 @@ import Vapor
 public func routes(_ router: Router) throws {
     
     try router.register(collection: DrugInfoController())
+    try router.register(collection: DescriptionController())
     
 //    // Basic "It works" example
 //    router.get { req in

@@ -47,6 +47,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     DrugInfo.defaultDatabase = .psql
     var migrations = MigrationConfig()
     migrations.add(model: DrugInfo.self, database: .psql)
+    migrations.add(model: Description.self, database: .psql)
     
 //    //开发环境填充测试数据
 //    if env == .development {
