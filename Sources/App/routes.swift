@@ -1,10 +1,29 @@
 import Vapor
+import Leaf
 
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
     
     try router.register(collection: DrugInfoController())
     try router.register(collection: DescriptionController())
+    
+    
+    
+    // "It works" page
+    router.get { req in
+        return try req.view().render("welcome")
+    }
+    
+    // Says hello
+    router.get("hello1", String.parameter) { req -> Future<View> in
+        return try req.view().render("hello", [
+            "name": req.parameters.next(String.self)
+        ])
+    }
+
+    router.get("hello") { req -> Future<View> in
+        return try req.view().render("hello", ["name": "Leaf"])
+    }
     
 //    // Basic "It works" example
 //    router.get { req in
