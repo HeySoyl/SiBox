@@ -27,7 +27,8 @@ final class Description: Content, PostgreSQLModel {
     var adaptation: String?         //适应症/功能主治
     var specification: String?      //规格
     var useMethods: String?         //用法用量
-    var adverse: String?            //禁忌
+    var adverse: String?            //不良反应
+    var taboo: String?              //禁忌
     var attention: String?          //注意事项
     var drugs: String?              //药物相互作用
     var pharmacology: String?       //药理相互作用（西）
@@ -47,7 +48,7 @@ final class Description: Content, PostgreSQLModel {
     var uuid: UUID?
 
     /// Creates a new `DrugInfo`.
-    init(id: Int? = nil, name: String?, nameEN: String?, namePY: String?, componentcs: String?, characteristics: String?, useCategory: String?, adaptation: String?, specification: String?, useMethods: String?, attention: String?, drugs: String?, pharmacology: String?, storage: String?, packing: String?, validity: String?, standards: String?, approval: String?, updateDate: String?, company: String?, proAds: String?, posCode: String?, phoneNum: String?, faxNum: String?, regAds: String?, busUrl: String?, uuid: UUID? = nil) {
+    init(id: Int? = nil, name: String?, nameEN: String?, namePY: String?, componentcs: String?, characteristics: String?, useCategory: String?, adaptation: String?, specification: String?, useMethods: String?, attention: String?, drugs: String?, pharmacology: String?, storage: String?, packing: String?, validity: String?, standards: String?, approval: String?,taboo: String?, updateDate: String?, company: String?, proAds: String?, posCode: String?, phoneNum: String?, faxNum: String?, regAds: String?, busUrl: String?, uuid: UUID? = nil) {
         self.id = id
         self.name = name
         self.nameEN = nameEN
@@ -66,6 +67,7 @@ final class Description: Content, PostgreSQLModel {
         self.validity = validity
         self.standards = standards
         self.approval = approval
+        self.taboo = taboo
         self.updateDate = updateDate
         self.company = company
         self.proAds = proAds
